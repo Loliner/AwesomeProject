@@ -22,28 +22,7 @@ import {
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome'
-  };
-  render() {
-    const { navigate } = this.props.navigation;;
-
-    return (
-      <View>
-        <Text>Hello, Chat App!</Text>
-        <Button
-          onPress={() => navigate('Chat', { user: 'Lucy' })}
-          title="Chat with Lucy"
-        />
-        <Button
-          onPress={() => navigate('Chat', { user: 'Jack' })}
-          title="Chat with Jack"
-        />
-      </View>
-    )
-  }
-}
+import MainScreenNavigator from './MainScreenNavigator';
 
 class ChatScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -61,7 +40,10 @@ class ChatScreen extends React.Component {
 
 const SimpleApp = StackNavigator({
   Home: {
-    screen: HomeScreen,
+    screen: MainScreenNavigator,
+    navigationOptions: {
+      title: 'My Chats'
+    }
   },
   Chat: {
     screen: ChatScreen,
